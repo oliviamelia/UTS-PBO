@@ -54,5 +54,5 @@ const cutiSakit = new CutiSakit();
 const cutiMelahirkan = new CutiMelahirkan();
 
 kinci.ajukan(cutiTahunan, 10);
-kinci.ajukan(cutiSakit, 4);
+kinci.ajukan(cutiSakit, 5);
 sinci.ajukan(cutiMelahirkan, 90);

@@ -1,15 +1,15 @@
 class Cuti {
-    constructor(jenisCuti, maxKuota) {
-        this.jenisCuti = jenisCuti;
-        this.maxKuota = maxKuota;
-        this.namaKaryawan = "";
-    }
+  constructor(jenisCuti, maxKuota) {
+    this.jenisCuti = jenisCuti;
+    this.maxKuota = maxKuota;
+    this.namaKaryawan = "";
+  }
 
-ajukanCuti(jumlahHari) {
-     if (jumlahHari <= this.maxKuota) {
-      return `Cuti ${this.jenis} selama ${jumlahHari} hari untuk ${this.namaKaryawan} disetujui.`;
+  ajukanCuti(jumlahHari) {
+    if (jumlahHari > this.maxKuota) {
+      return `Maaf ${this.namaKaryawan}, kuota cuti ${this.jenisCuti} kamu tidak mencukupi (maksimal ${this.maxKuota} hari).`;
     } else {
-      return   `Kuota ${this.namaKaryawan} tidak cukup untuk mengajukan cuti ini.`;
+      return `Pengajuan cuti ${this.jenisCuti} selama ${jumlahHari} hari untuk ${this.namaKaryawan} berhasil disetujui.`;
     }
   }
 }
@@ -22,7 +22,7 @@ class CutiTahunan extends Cuti {
 
 class CutiSakit extends Cuti {
   constructor() {
-    super("Sakit", 2);
+    super("Sakit", 3);
   }
 }
 
@@ -33,26 +33,27 @@ class CutiMelahirkan extends Cuti {
 }
 
 class Karyawan {
-  constructor(nama, peran) {
+  constructor(nama, jabatan) {
     this.nama = nama;
-    this.peran = peran;
+    this.jabatan = jabatan;
   }
 
-ajukan(cuti, jumlahHari) {
+  ajukan(cuti, jumlahHari) {
     cuti.namaKaryawan = this.nama;
 
-    console.log(`\n${this.nama} (${this.peran}) mengajukan cuti ${cuti.jenis}`);
+    console.log(`\n ${this.nama} (${this.jabatan}) mengajukan cuti ${cuti.jenisCuti}.`);
     console.log(cuti.ajukanCuti(jumlahHari));
   }
 }
 
-const kinci = new Karyawan("Kinci", "Staff");
-const sinci = new Karyawan("Sinci", "Manajer");
+// ==== Contoh Penggunaan ====
+const arya = new Karyawan("Arya", "Staf HRD");
+const lani = new Karyawan("Lani", "Kepala Divisi");
 
-const cutiTahunan = new CutiTahunan();
-const cutiSakit = new CutiSakit();
-const cutiMelahirkan = new CutiMelahirkan();
+const tahunan = new CutiTahunan();
+const sakit = new CutiSakit();
+const melahirkan = new CutiMelahirkan();
 
-kinci.ajukan(cutiTahunan, 10);
-kinci.ajukan(cutiSakit, 5);
-sinci.ajukan(cutiMelahirkan, 90);
+arya.ajukan(tahunan, 7);
+arya.ajukan(sakit, 5);
+lani.ajukan(melahirkan, 90);

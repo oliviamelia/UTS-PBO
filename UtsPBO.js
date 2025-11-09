@@ -47,13 +47,13 @@ class Karyawan {
 }
 
 // ==== Contoh Penggunaan ====
-const arya = new Karyawan("Arya", "Staf HRD");
+const olivia = new Karyawan("olivia", "Staf HRD");
 const lani = new Karyawan("Lani", "Kepala Divisi");
 
 const tahunan = new CutiTahunan();
 const sakit = new CutiSakit();
 const melahirkan = new CutiMelahirkan();
 
-arya.ajukan(tahunan, 7);
-arya.ajukan(sakit, 5);
+olivia.ajukan(tahunan, 7);
+olivia.ajukan(sakit, 5);
 lani.ajukan(melahirkan, 90);
